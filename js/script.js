@@ -70,7 +70,7 @@ function initializeSwipers() {
 let alldata = [];
 async function fetchBooks() {
   try {
-    const response = await fetch("http://localhost:3000/books");
+    const response = await fetch("https://booksdata-json-server.onrender.com/books");
     alldata = await response.json();
     localStorage.setItem("alldata", JSON.stringify(alldata));
     displayBooks(alldata);
