@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cartDiv {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #cart-card {
+            display: flex;
+            height: fit-content;
+            align-items: center;
+            padding: 10px;
+            gap: 50px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
+        }
+
+        #cart-card button:hover,
+        #place-order:hover {
+            background-color: #00bcd4;
+        }
+
+        #remove-buttons {
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        #buy-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            
+
+        }
+
+        #cartImage {
+            height: 200px;
+            object-fit: contain;
+        }
+
+        #data-cart {
+            width: 30vw;
+            justify-content: center;
+            padding: 0px 20px;
+        }
+
+        #data-cart #description {
+            margin-top: 30px;
+        }
+
+        #data-cart #brand {
+            text-align: center;
+        }
+
+        #quantity-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #quantity-buttons button,
+        #place-order {
+            font-size: large;
+            background-color: #257180;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            display: block;
+            margin: 0px auto;
+        }
+
+        #price {
+            width: 150px;
+        }
+
+        #backtoHome {
+            width: fit-content;
+            margin: 30px auto;
+            margin-top: 1rem;
+            display:inline-block;
+            padding:.9rem 3rem;
+            border-radius: .5rem;
+            color:#fff;
+            background:green;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 500;
+            
+        }
+
+        #priceDetails {
+            display: flex;
+            flex-direction: column;
+            row-gap: 50px;
+            margin: 40px auto;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            font-weight: 600;
+            font-size: larger;
+            margin: 10px 0px;
+        }
+
+        #amount {
+            box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
+            width: 40vw;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10%;
+        }
+
+        #amount h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #257180;
+        }
+        #brand{
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Default styles for desktop */
+
+/* Mobile view (screens smaller than 768px) */
+@media (max-width: 767px) {
+    body {
+        flex-direction: column;
+        padding: 10px; /* Add padding to the body for mobile */
+    }
+
+    #cartDiv {
+        text-align: center;
+    }
+
+    #cart-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 20px;
+    }
+
+    #cartImage {
+        height: 150px; /* Adjust image size for mobile */
+        width: 100%;
+        object-fit: contain;
+    }
+
+    #data-cart {
+        width: 90%; /* Adjust width to be responsive on mobile */
+        padding: 0px 10px;
+    }
+
+    #description {
+        font-size: 0.9rem;
+        margin-top: 20px;
+    }
+
+    #brand {
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    #quantity-buttons {
+        flex-direction: row; /* Adjust layout for buttons */
+        gap: 8px;
+    }
+
+    #price {
+        font-size: 1rem;
+        width: 100px;
+    }
+
+    #backtoHome {
+        font-size: 0.9rem;
+        padding: 0.5rem 1.5rem;
+    }
+
+    #priceDetails {
+        margin: 20px 0;
+        padding: 10px;
+    }
+
+    .details {
+        font-size: 1rem;
+        margin: 5px 0;
+    }
+
+    #amount {
+        width: 90%;
+        padding: 15px;
+    }
+
+    #amount h1 {
+        font-size: 1.2rem;
+        margin-top: 30px;
+    }
+
+    #cart-card button,
+    #place-order {
+        font-size: 1rem;
+        padding: 8px;
+        width: 100%;
+    }
+}
+
+/* Tablet view (screens from 768px to 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #cart-card {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    #cartImage {
+        height: 180px;
+        width: 150px;
+    }
+
+    #data-cart {
+        width: 50%;
+    }
+
+    #quantity-buttons {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    #price {
+        font-size: 1.2rem;
+        width: 130px;
+    }
+
+    #backtoHome {
+        width: fit-content;
+        margin: 30px auto;
+        margin-top: 1rem;
+        padding: 0.8rem 2.5rem;
+        font-size: 1rem;
+    }
+
+    .details {
+        font-size: 1.2rem;
+    }
+
+    #amount {
+        width: 80%;
+        padding: 15px;
+    }
+
+    #amount h1 {
+        font-size: 1.4rem;
+        margin-top: 40px;
+    }
+
+    #cart-card button,
+    #place-order {
+        font-size: 1.2rem;
+        padding: 10px;
+        width: auto;
+    }
+}
+
+/* Desktop view (screens above 1024px) */
+@media (min-width: 1025px) {
+    #cart-card {
+        flex-direction: row;
+        gap: 50px;
+    }
+
+    #cartImage {
+        height: 200px;
+    }
+
+    #data-cart {
+        width: 30vw;
+    }
+
+    #quantity-buttons {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    #price {
+        width: 150px;
+    }
+
+    #priceDetails {
+        margin: 40px auto;
+    }
+
+    .details {
+        font-size: 1.2rem;
+    }
+
+    #amount {
+        width: 40vw;
+    }
+
+    #amount h1 {
+        font-size: 1.6rem;
+        margin-top: 50px;
+    }
+
+    #cart-card button,
+    #place-order {
+        font-size: 1.5rem;
+        padding: 12px 20px;
+        width: auto;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <button id="backtoHome">Back To Home</button>
+    <div id="cartDiv"></div>
+    <div id="amount">
+        <h1>Price Details</h1>
+        <div id="priceDetails">
+            <ul class="">
+                <div class="details"><li>Price (All Items)</li> <li id="productsPrice"></li></div>
+                <div class="details"><li>Discount (10%)</li><li id="coupons"></li></div>
+                <div class="details"><li>Delivery Charges</li><li id="delivery"></li></div>
+                <div class="details"><li>Secured Packaging Fee</li><li id="packaging"></li></div>
+                <hr><br>
+                <div class="details"><li>Total Amount</li><li id="totalAmount"></li></div>
+            </ul>
+        </div>
+        <button id="place-order">Place Order</button>
+    </div>
+
+    <script>
+        const cartContainer = document.getElementById("cartDiv");
+        const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+        let productsPrice = document.getElementById("productsPrice");
+        let coupons = document.getElementById("coupons");
+        let delivery = document.getElementById("delivery");
+        let packaging = document.getElementById("packaging");
+        let totalAmount = document.getElementById("totalAmount");
+        let amountDiv = document.querySelector("#amount");
+    
+        console.log(cartData);
+        document.addEventListener("DOMContentLoaded", () => {
+            if (cartData.length === 0) {
+                cartContainer.innerHTML = "<h3>Your cart is empty.</h3>";
+                amountDiv.style.display = "none";
+                return;
+            }
+    
+            cartData.forEach((x, index) => {
+                let cartCard = document.createElement("div");
+                cartCard.id = "cart-card";
+                cartCard.innerHTML += `
+                    <div id="buy-buttons">
+                        <button id="buyNow">Buy</button>
+                        <button id="remove">Remove</button>
+                    </div>
+                    <img id="cartImage" src="${x.cover_image_url}">
+                    <div id="data-cart">
+                        <p id="brand">${x.title}</p>
+                        <p id="description">${x.author}</p>
+                    </div>
+                    <div id="quantity-buttons">
+                        <button id="decre">-</button>
+                        <p><b id="count">1</p></b>
+                        <button id="incre">+</button>
+                    </div>
+                    <p id="price"><b>₹ ${x.price}</b></p>`;
+    
+                cartContainer.append(cartCard);
+    
+                // Remove process
+                cartCard.querySelector("#remove").addEventListener("click", () => {
+                    if (confirm("Are you sure you want to remove the item?")) {
+                        cartCard.remove();
+                        cartData.splice(index, 1);
+                        if (cartData.length === 0) {
+                            cartContainer.innerHTML = "<h3>Your Cart is Empty</h3>";
+                            amountDiv.style.display = "none";
+                        }
+                        localStorage.setItem("cart", JSON.stringify(cartData));
+                    }
+                });
+    
+                // Count process
+                let increment = cartCard.querySelector("#incre");
+                let decrement = cartCard.querySelector("#decre");
+                let count = cartCard.querySelector("#count");
+                let productCount = 1;
+    
+                increment.addEventListener("click", () => {
+                    productCount += 1;
+                    count.textContent = `${productCount}`;
+                });
+    
+                decrement.addEventListener("click", () => {
+                    if (productCount > 1) {
+                        productCount -= 1;
+                        count.textContent = `${productCount}`;
+                    }
+                });
+    
+                // Buy Now process
+                cartCard.querySelector("#buyNow").addEventListener("click", (event) => {
+                    event.preventDefault();
+                    if (confirm("Are you sure you want to buy the item?")) {
+                        window.location.href = "payments.html";
+                        cartCard.remove();
+                        cartData.splice(index, 1);
+                        if (cartData.length === 0) {
+                            cartContainer.innerHTML = "<h3>Your Cart is Empty</h3>";
+                            amountDiv.style.display = "none";
+                        }
+                        localStorage.setItem("cart", JSON.stringify(cartData));
+                    }
+                });
+            });
+    
+            // Total price calculation
+            let price = 0;
+            cartData.forEach((x) => {
+                // Ensure that x.price is a number before processing
+                let singlePrice = x.price;
+                if (typeof singlePrice === "string") {
+                    // If it's a string, clean up the ₹ symbol and commas
+                    singlePrice = singlePrice.replace("₹", "").replace(",", "").trim();
+                }
+    
+                price += Number(singlePrice);
+            });
+    
+            productsPrice.textContent = `+ ₹ ${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+            let discount = Number(price * 0.1);
+            coupons.textContent = `- ₹ ${discount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+            coupons.style.color = "green";
+            let deliveryCharges = 52.00;
+            delivery.textContent = `+ ₹ 52.00`;
+            let packagingCharges = 59.00;
+            packaging.textContent = `+ ₹ 29.00`;
+            let totalPrice = (price - discount + packagingCharges + deliveryCharges).toFixed(2);
+            totalAmount.textContent = `₹ ${totalPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        });
+    
+        let backtoHome = document.getElementById("backtoHome");
+        backtoHome.addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+    </script>
+    
+</body>
+
+</html>
